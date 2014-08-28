@@ -25,6 +25,8 @@ namespace Mundialito.DAL.Teams
         [MaxLength(3)]
         public string ShortName { get; set; }
 
+        public int? CrawlerTeamId { get; set; }
+
         public ICollection<Game> HomeMatches { get; set; }
 
         public ICollection<Game> AwayMatches { get; set; }

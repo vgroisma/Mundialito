@@ -2,7 +2,7 @@
 angular.module('mundialitoApp').controller('DashboardCtrl', ['$scope','$log','$location','$timeout','GamesManager','UsersManager','GeneralBetsManager','teams', function ($scope, $log, $location, $timeout, GamesManager, UsersManager, GeneralBetsManager, teams) {
     $scope.generalBetsAreOpen = false;
     $scope.submittedGeneralBet = true;
-    $scope.pendingUpdateGames = false;
+    $scope.ongoingGames = false;
 
     $scope.teamsDic = {};
 
@@ -12,7 +12,7 @@ angular.module('mundialitoApp').controller('DashboardCtrl', ['$scope','$log','$l
 
     GamesManager.loadAllGames().then(function(games) {
         $scope.games = games;
-        $scope.pendingUpdateGames = _.findWhere($scope.games,{IsPendingUpdate: true}) !== undefined;
+        $scope.ongoingGames = _.findWhere($scope.games,{IsOngoing: true}) !== undefined;
     });
 
     var userHasGeneralBet = function() {
@@ -73,9 +73,9 @@ angular.module('mundialitoApp').controller('DashboardCtrl', ['$scope','$log','$l
         };
     };
 
-    $scope.isPendingUpdate = function() {
+    $scope.isOngoing = function() {
         return function( item ) {
-            return item.IsPendingUpdate;
+            return item.IsOngoing;
         };
     };
 

@@ -11,7 +11,10 @@
                         <div ng-if="game.IsPendingUpdate" class="text-center">
                             <span class="label label-info"><i class="fa fa-clock-o"></i> Pending Update</span>
                         </div>
-                        <div ng-if="!game.IsOpen && !game.IsPendingUpdate" class="text-center">
+                        <div ng-if="game.IsOngoing" class="text-center">
+                            <span class="label label-warning"><i class="fa fa-play-circle-o"></i> Ongoing</span>
+                        </div>
+                        <div ng-if="!game.IsOpen && !game.IsPendingUpdate && !game.IsOngoing" class="text-center">
                             {{game.HomeScore}} - {{game.AwayScore}} (<span tooltip="Cards Mark">{{game.CardsMark}}</span>,<span tooltip="Corners Mark">{{game.CornersMark}}</span>)
                         </div>
                         <div ng-if="game.IsOpen" class="text-center">-</div>

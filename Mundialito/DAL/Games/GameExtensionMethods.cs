@@ -24,9 +24,22 @@ namespace Mundialito.DAL.Games
 
         public static Boolean IsPendingUpdate(this Game game, DateTime now)
         {
+            if (game.IsOpen(now) || game.IsOngoing(now))
+                return false;
+
+            return game.HomeScore == null || game.AwayScore == null || game.CardsMark == null || game.CornersMark == null;
+        }
+
+        public static Boolean IsOngoing(this Game game)
+        {
+            return game.IsOngoing(DateTime.UtcNow);
+        }
+
+        public static Boolean IsOngoing(this Game game, DateTime now)
+        {
             if (game.IsOpen(now))
                 return false;
-            return game.HomeScore == null || game.AwayScore == null || game.CardsMark == null || game.CornersMark == null;
+            return now.Subtract(game.Date).TotalMinutes < 115;
         }
 
         public static Boolean IsBetResolved(this Game game)

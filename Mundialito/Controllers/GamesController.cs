@@ -143,6 +143,7 @@ namespace Mundialito.Controllers
             newGame.AwayTeamId = game.AwayTeam.TeamId;
             newGame.StadiumId = game.Stadium.StadiumId;
             newGame.Date = game.Date;
+            newGame.CrawlerGameId = game.CrawlerGameId;
             var res = gamesRepository.InsertGame(newGame);
             Trace.TraceInformation("Posting new Game: {0}", game);
             gamesRepository.Save();
@@ -172,6 +173,7 @@ namespace Mundialito.Controllers
             item.CardsMark = game.CardsMark;
             item.CornersMark = game.CornersMark;
             item.Date = game.Date;
+            item.CrawlerGameId = game.CrawlerGameId;
 
             gamesRepository.UpdateGame(item);
             gamesRepository.Save();

@@ -45,6 +45,7 @@ angular.module('mundialitoApp').factory('TeamsManager', ['$http', '$q', 'Team','
                 { property: 'Flag', label: 'Flag', type: 'url', attr: { required: true } },
                 { property: 'Logo', label: 'Logo', type: 'url', attr: { required: true } },
                 { property: 'ShortName', label: 'Short Name', type: 'text', attr: { ngMaxlength: 3, ngMinlength: 3, required: true } },
+                { property: 'CrawlerTeamId', label: 'Crawler Team ID', type: 'number', attr: { min: 0 } }
             ];
         },
 

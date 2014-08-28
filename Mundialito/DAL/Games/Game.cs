@@ -50,7 +50,9 @@ namespace Mundialito.DAL.Games
                 return Date.Subtract(TimeSpan.FromMinutes(30));
             }
         }
-       
+
+        public int? CrawlerGameId { get; set; }
+
         public override string ToString()
         {
             return string.Format("Game ID = {0}, {1} - {2}", GameId, HomeTeam != null ? HomeTeam.Name : "Unknown", AwayTeam != null ? AwayTeam.Name : "Unknown");

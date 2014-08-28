@@ -25,7 +25,9 @@ namespace Mundialito.Models
             IsOpen = game.IsOpen();
             IsPendingUpdate = game.IsPendingUpdate();
             IsBetResolved = game.IsBetResolved();
+            IsOngoing = game.IsOngoing();
             Mark = game.Mark();
+            CrawlerGameId = game.CrawlerGameId;
         }
 
         public int GameId { get; private set; }
@@ -62,7 +64,11 @@ namespace Mundialito.Models
 
         public Boolean IsBetResolved { get; private set; }
 
+        public Boolean IsOngoing { get; private set; }
+
         public String Mark { get; private set; }
+
+        public int? CrawlerGameId { get; private set; }
 
     }
 
@@ -80,6 +86,7 @@ namespace Mundialito.Models
             Flag = team.Flag;
             Logo = team.Logo;
             ShortName = team.ShortName;
+            CrawlerTeamId = team.CrawlerTeamId;
         }
 
         public int TeamId { get; set; }
@@ -92,6 +99,7 @@ namespace Mundialito.Models
 
         public string ShortName { get; set; }
 
+        public int? CrawlerTeamId { get; private set; }
     }
 
     public class NewGameModel
@@ -114,6 +122,8 @@ namespace Mundialito.Models
         public Boolean IsOpen { get; set; }
 
         public Boolean IsPendingUpdate { get; set; }
+
+        public int? CrawlerGameId { get; set; }
     }
 
     public class PutGameModel
@@ -130,6 +140,7 @@ namespace Mundialito.Models
             AwayScore = game.AwayScore;
             CornersMark = game.CornersMark;
             CardsMark = game.CardsMark;
+            CrawlerGameId = game.CrawlerGameId;
         }
 
         public DateTime Date { get; set; }
@@ -142,6 +153,7 @@ namespace Mundialito.Models
 
         public String CardsMark { get; set; }
 
+        public int? CrawlerGameId { get; set; }
     }
 
     public class PutGameModelResult : PutGameModel
@@ -152,7 +164,9 @@ namespace Mundialito.Models
             IsOpen = game.IsOpen(now);
             IsPendingUpdate = game.IsPendingUpdate(now);
             IsBetResolved = game.IsBetResolved(now);
+            IsOngoing = game.IsOngoing(now);
             Mark = game.Mark(now);
+            CrawlerGameId = game.CrawlerGameId;
         }
 
         public int GameId { get; private set; }
@@ -163,7 +177,10 @@ namespace Mundialito.Models
 
         public Boolean IsBetResolved { get; private set; }
 
+        public Boolean IsOngoing { get; private set; }
+
         public String Mark { get; private set; }
 
+        public int? CrawlerGameId { get; set; }
     }
 }

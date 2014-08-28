@@ -18,6 +18,39 @@ namespace Mundialito.Tests.Models
         }
 
         [TestMethod]
+        public void IsOngoingSimpleTest()
+        {
+            var game = new Game();
+            game.Date = DateTime.Now.ToUniversalTime();
+
+            Assert.IsTrue(game.IsOngoing(), "Game should be ongoing");
+            Assert.IsFalse(game.IsPendingUpdate(), "Game should not be pending update");
+            Assert.IsFalse(game.IsOpen(), "Game should not be open");
+        }
+
+        [TestMethod]
+        public void IsOngoingTest()
+        {
+            var game = new Game();
+            game.Date = DateTime.Now.ToUniversalTime().Subtract(TimeSpan.FromMinutes(80));
+
+            Assert.IsTrue(game.IsOngoing(), "Game should be ongoing");
+            Assert.IsFalse(game.IsPendingUpdate(), "Game should not be pending update");
+            Assert.IsFalse(game.IsOpen(), "Game should not be open");
+        }
+
+        [TestMethod]
+        public void IsOngoingTest2()
+        {
+            var game = new Game();
+            game.Date = DateTime.Now.ToUniversalTime().Subtract(TimeSpan.FromMinutes(92));
+
+            Assert.IsFalse(game.IsOngoing(), "Game should not be ongoing");
+            Assert.IsTrue(game.IsPendingUpdate(), "Game should be pending update");
+            Assert.IsFalse(game.IsOpen(), "Game should not be open");
+        }
+
+        [TestMethod]
         public void IsOpenSameDateTest()
         {
             var game = new Game();
